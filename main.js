@@ -10,12 +10,14 @@ const myApp = createApp({
     },
     methods: {
         addTask() {
-            const obj = {
-                taskName: taskInput.value,
-                done: false
-            };
-            this.todoList.push(obj);
-            taskInput.value = "";
+            if(taskInput.value !== ""){ //l'utente non può inserire un campo vuoto
+                const obj = {
+                    taskName: taskInput.value,
+                    done: false
+                };
+                this.todoList.push(obj);
+                taskInput.value = "";
+            }
         },
         unlineTask(){
             const x = event.target.innerText;
