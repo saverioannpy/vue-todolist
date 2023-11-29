@@ -22,16 +22,20 @@ const myApp = createApp({
             const x = event.target.innerText;
             for(let i = 0 ; i <= this.todoList.length-1 ; i++){ 
                 if(this.todoList[i].taskName === x){
-                    this.todoList[i].done = true;
+                    if(this.todoList[i].done === true){
+                        this.todoList[i].done = false;
+                    }else{
+                        this.todoList[i].done = true;
+                    }
                 }
             }
         },
         deleteTask(){
-            let x = event.target.innerText;
-            console.log(event)
-            //console.log(x);
-            //this.todoList = this.todoList.filter( (el) => el != x );
-            //console.log(this.todoList);
+            let x = event.target;
+            x = x.parentElement.innerText;
+            x = x.split('\n')[0];
+            this.todoList = this.todoList.filter( (el) => el.taskName != x );
+            console.log(this.todoList);
         }
     }
 });
